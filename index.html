@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HARM GODS</title>
+  <meta name="description" content="Will you bow to us?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BLOOD DRIPS -->
+  <div class="blood-drips" id="bloodDrips"></div>
+
+  <!-- AMBIENT PARTICLES -->
+  <div class="particles" id="particles"></div>
+
+  <!-- ========== GATE SCREEN ========== -->
+  <div class="gate-screen" id="gateScreen">
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+
+    <div class="gate-content">
+      <div class="pentagram-glow"></div>
+      <h1 class="gate-title glitch" data-text="HARM GODS">HARM GODS</h1>
+      <div class="gate-subtitle">⛧ THE COUNCIL AWAITS ⛧</div>
+
+      <div class="gate-question">
+        <p class="question-text">Will you bow to us?</p>
+        <div class="gate-buttons">
+          <button class="btn btn-yes" id="btnYes" onclick="acceptGate()">
+            <span class="btn-icon">🩸</span> YES
+          </button>
+          <button class="btn btn-no" id="btnNo" onclick="rejectGate()">
+            <span class="btn-icon">💀</span> NO
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== REJECTION SCREEN ========== -->
+  <div class="reject-screen hidden" id="rejectScreen">
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+
+    <div class="reject-content">
+      <div class="skull-icon">💀</div>
+      <h1 class="reject-title glitch" data-text="FOOLISH MORTAL">FOOLISH MORTAL</h1>
+      <p class="reject-sub">You dare defy the HARM GODS?</p>
+      <div class="ip-reveal">
+        <p class="ip-label">We see you.</p>
+        <div class="ip-box">
+          <span class="ip-prefix">YOUR IP:</span>
+          <span class="ip-address" id="ipAddress">LOCATING...</span>
+        </div>
+      </div>
+      <p class="reject-warning">There is no escape. We are always watching.</p>
+      <button class="btn btn-crawl" onclick="crawlBack()">🩸 Crawl back and bow 🩸</button>
+    </div>
+  </div>
+
+  <!-- ========== MAIN SITE ========== -->
+  <div class="main-site hidden" id="mainSite">
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+
+    <!-- Blood splatter decorations -->
+    <div class="blood-splatter splatter-1"></div>
+    <div class="blood-splatter splatter-2"></div>
+    <div class="blood-splatter splatter-3"></div>
+
+    <header class="site-header">
+      <h1 class="site-title glitch" data-text="HARM GODS">HARM GODS</h1>
+      <p class="site-tagline">⛧ You have been deemed worthy ⛧</p>
+      <div class="header-line"></div>
+    </header>
+
+    <main class="members-section">
+      <h2 class="section-title">THE COUNCIL</h2>
+
+      <div class="members-grid">
+
+        <!-- CYBER CARD (Better - featured) -->
+        <div class="member-card member-featured" id="cardCyber">
+          <div class="card-blood-drip"></div>
+          <div class="card-glow"></div>
+          <div class="crown-badge">👑 SUPREME</div>
+          <div class="member-avatar avatar-cyber">
+            <div class="avatar-ring"></div>
+            <span class="avatar-letter">C</span>
+          </div>
+          <h3 class="member-name glitch-small" data-text="CYBER">CYBER</h3>
+          <p class="member-role">⛧ Supreme God ⛧</p>
+          <p class="member-desc">The one who stands above all. Fear the name.</p>
+          <div class="member-socials">
+            <a href="#" class="social-link social-discord" title="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+              <span>Discord</span>
+            </a>
+            <a href="#" class="social-link social-tiktok" title="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.52a8.23 8.23 0 0 0 4.76 1.53v-3.4a4.85 4.85 0 0 1-1-.04z"/></svg>
+              <span>TikTok</span>
+            </a>
+            <a href="#" class="social-link social-youtube" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#0a0a0a" d="M9.545 15.568V8.432L15.818 12z"/></svg>
+              <span>YouTube</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CAZZ CARD -->
+        <div class="member-card" id="cardCazz">
+          <div class="card-blood-drip"></div>
+          <div class="member-avatar avatar-cazz">
+            <div class="avatar-ring"></div>
+            <span class="avatar-letter">C</span>
+          </div>
+          <h3 class="member-name glitch-small" data-text="CAZZ">CAZZ</h3>
+          <p class="member-role">⛧ Dark God ⛧</p>
+          <p class="member-desc">A force of chaos. Do not underestimate.</p>
+          <div class="member-socials">
+            <a href="#" class="social-link social-discord" title="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+              <span>Discord</span>
+            </a>
+            <a href="#" class="social-link social-tiktok" title="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.52a8.23 8.23 0 0 0 4.76 1.53v-3.4a4.85 4.85 0 0 1-1-.04z"/></svg>
+              <span>TikTok</span>
+            </a>
+            <a href="#" class="social-link social-youtube" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#0a0a0a" d="M9.545 15.568V8.432L15.818 12z"/></svg>
+              <span>YouTube</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-line"></div>
+      <p class="footer-text">⛧ HARM GODS — We are eternal ⛧</p>
+      <p class="footer-sub">You were warned.</p>
+    </footer>
+  </div>
+
+  <!-- AUDIO (optional ambient) -->
+  <script src="script.js"></script>
+</body>
+</html>
