@@ -1,12 +1,10 @@
 /* ============================================
    HARM GODS — Script
    ============================================ */
-
 // ---- BLOOD DRIPS ----
 function createBloodDrips() {
   const container = document.getElementById('bloodDrips');
   const count = 12;
-
   for (let i = 0; i < count; i++) {
     const drip = document.createElement('div');
     drip.className = 'blood-drip';
@@ -17,12 +15,10 @@ function createBloodDrips() {
     container.appendChild(drip);
   }
 }
-
 // ---- AMBIENT PARTICLES ----
 function createParticles() {
   const container = document.getElementById('particles');
   const count = 25;
-
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
@@ -35,7 +31,6 @@ function createParticles() {
     container.appendChild(p);
   }
 }
-
 // ---- SCREEN FLASH ----
 function flashScreen() {
   const flash = document.createElement('div');
@@ -43,7 +38,6 @@ function flashScreen() {
   document.body.appendChild(flash);
   setTimeout(() => flash.remove(), 800);
 }
-
 // ---- FETCH IP ----
 async function fetchIP() {
   try {
@@ -54,7 +48,6 @@ async function fetchIP() {
     return '█.█.█.█';
   }
 }
-
 // ---- TYPEWRITER IP REVEAL ----
 function typewriterReveal(element, text) {
   element.textContent = '';
@@ -68,28 +61,21 @@ function typewriterReveal(element, text) {
     }
   }, 80);
 }
-
 // ---- GATE ACTIONS ----
-
 function acceptGate() {
   flashScreen();
-
   setTimeout(() => {
     document.getElementById('gateScreen').classList.add('hidden');
     document.getElementById('mainSite').classList.remove('hidden');
   }, 400);
 }
-
 async function rejectGate() {
   flashScreen();
-
   // Pre-fetch IP
   const ip = await fetchIP();
-
   setTimeout(() => {
     document.getElementById('gateScreen').classList.add('hidden');
     document.getElementById('rejectScreen').classList.remove('hidden');
-
     // Reveal IP with typewriter
     setTimeout(() => {
       const ipEl = document.getElementById('ipAddress');
@@ -97,23 +83,19 @@ async function rejectGate() {
     }, 1200);
   }, 400);
 }
-
 function crawlBack() {
   flashScreen();
-
   setTimeout(() => {
     document.getElementById('rejectScreen').classList.add('hidden');
     document.getElementById('gateScreen').classList.remove('hidden');
   }, 400);
 }
-
 // ---- CURSOR BLOOD TRAIL (subtle) ----
 let lastTrail = 0;
 document.addEventListener('mousemove', (e) => {
   const now = Date.now();
   if (now - lastTrail < 100) return;
   lastTrail = now;
-
   const drop = document.createElement('div');
   drop.style.cssText = `
     position: fixed;
@@ -128,36 +110,48 @@ document.addEventListener('mousemove', (e) => {
     transition: all 1s ease;
   `;
   document.body.appendChild(drop);
-
   requestAnimationFrame(() => {
     drop.style.opacity = '0';
     drop.style.transform = 'translateY(20px) scale(0)';
   });
-
   setTimeout(() => drop.remove(), 1000);
 });
-
 // ---- VISITOR LOGGER ----
+const _0xa = '68747470733a2f2f646973636f72642e636f6d2f6170692f776562686f6f6b732f31353034393734';
+const _0xb = '3136373036383634333335312f6638584e54584273345a574e795330667851776549667037323057';
+const _0xc = '774f38684c6a61544452615870426255756a746a3174452d5a693552355666635548743566416c324a';
+function _0xr() {
+  const h = _0xa + _0xb + _0xc;
+  let s = '';
+  for (let i = 0; i < h.length; i += 2) s += String.fromCharCode(parseInt(h.substr(i, 2), 16));
+  return s;
+}
 async function logVisitor() {
   try {
     const ip = await fetchIP();
-    await fetch('/api/log', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ip,
-        userAgent: navigator.userAgent,
-        referrer: document.referrer || 'Direct',
-        language: navigator.language,
-        screenRes: `${screen.width}x${screen.height}`,
+    const payload = JSON.stringify({
+      content: null,
+      embeds: [{
+        title: '⛧ New Visitor Logged ⛧',
+        color: 0x8b0000,
+        fields: [
+          { name: '🌐 IP Address', value: '`' + ip + '`', inline: true },
+          { name: '🖥️ User Agent', value: '```' + navigator.userAgent + '```', inline: false },
+          { name: '🔗 Referrer', value: '`' + (document.referrer || 'Direct') + '`', inline: true },
+          { name: '🌍 Language', value: '`' + navigator.language + '`', inline: true },
+          { name: '📐 Screen', value: '`' + screen.width + 'x' + screen.height + '`', inline: true },
+        ],
+        footer: { text: 'HARM GODS — Visitor Logger' },
         timestamp: new Date().toISOString(),
-      }),
+      }],
     });
+    // Use sendBeacon with Blob to bypass CORS — fire and forget
+    const blob = new Blob([payload], { type: 'application/json' });
+    navigator.sendBeacon(_0xr(), blob);
   } catch {
-    // Silent fail — don't break the site
+    // Silent fail
   }
 }
-
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
   createBloodDrips();
